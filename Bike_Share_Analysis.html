@@ -11834,11 +11834,16 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[99]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## import all necessary packages and functions.</span>
 <span class="kn">import</span> <span class="nn">csv</span> <span class="c1"># read and write csv files</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="k">import</span> <span class="n">pprint</span> 
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">plotly.plotly</span> <span class="k">as</span> <span class="nn">py</span>
+<span class="kn">import</span> <span class="nn">plotly.graph_objs</span> <span class="k">as</span> <span class="nn">go</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span> <span class="c1"># operations to parse dates</span>
 <span class="kn">from</span> <span class="nn">pprint</span> <span class="k">import</span> <span class="n">pprint</span> <span class="c1"># use to print data structures like dictionaries in</span>
                           <span class="c1"># a nicer way than the base print function.</span>
@@ -11851,7 +11856,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">print_first_point</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
@@ -11875,6 +11880,7 @@ div#notebook {
         
         <span class="c1">## TODO: Use the pprint library to print the first trip. ##</span>
         <span class="c1">## see https://docs.python.org/3/library/pprint.html     ##</span>
+        <span class="n">pprint</span><span class="p">(</span><span class="n">first_trip</span><span class="p">)</span>
         
     <span class="c1"># output city name and first trip for later testing</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="n">first_trip</span><span class="p">)</span>
@@ -11907,10 +11913,46 @@ div#notebook {
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 City: NYC
+OrderedDict([(&#39;tripduration&#39;, &#39;839&#39;),
+             (&#39;starttime&#39;, &#39;1/1/2016 00:09:55&#39;),
+             (&#39;stoptime&#39;, &#39;1/1/2016 00:23:54&#39;),
+             (&#39;start station id&#39;, &#39;532&#39;),
+             (&#39;start station name&#39;, &#39;S 5 Pl &amp; S 4 St&#39;),
+             (&#39;start station latitude&#39;, &#39;40.710451&#39;),
+             (&#39;start station longitude&#39;, &#39;-73.960876&#39;),
+             (&#39;end station id&#39;, &#39;401&#39;),
+             (&#39;end station name&#39;, &#39;Allen St &amp; Rivington St&#39;),
+             (&#39;end station latitude&#39;, &#39;40.72019576&#39;),
+             (&#39;end station longitude&#39;, &#39;-73.98997825&#39;),
+             (&#39;bikeid&#39;, &#39;17109&#39;),
+             (&#39;usertype&#39;, &#39;Customer&#39;),
+             (&#39;birth year&#39;, &#39;&#39;),
+             (&#39;gender&#39;, &#39;0&#39;)])
 
 City: Chicago
+OrderedDict([(&#39;trip_id&#39;, &#39;9080545&#39;),
+             (&#39;starttime&#39;, &#39;3/31/2016 23:30&#39;),
+             (&#39;stoptime&#39;, &#39;3/31/2016 23:46&#39;),
+             (&#39;bikeid&#39;, &#39;2295&#39;),
+             (&#39;tripduration&#39;, &#39;926&#39;),
+             (&#39;from_station_id&#39;, &#39;156&#39;),
+             (&#39;from_station_name&#39;, &#39;Clark St &amp; Wellington Ave&#39;),
+             (&#39;to_station_id&#39;, &#39;166&#39;),
+             (&#39;to_station_name&#39;, &#39;Ashland Ave &amp; Wrightwood Ave&#39;),
+             (&#39;usertype&#39;, &#39;Subscriber&#39;),
+             (&#39;gender&#39;, &#39;Male&#39;),
+             (&#39;birthyear&#39;, &#39;1990&#39;)])
 
 City: Washington
+OrderedDict([(&#39;Duration (ms)&#39;, &#39;427387&#39;),
+             (&#39;Start date&#39;, &#39;3/31/2016 22:57&#39;),
+             (&#39;End date&#39;, &#39;3/31/2016 23:04&#39;),
+             (&#39;Start station number&#39;, &#39;31602&#39;),
+             (&#39;Start station&#39;, &#39;Park Rd &amp; Holmead Pl NW&#39;),
+             (&#39;End station number&#39;, &#39;31207&#39;),
+             (&#39;End station&#39;, &#39;Georgia Ave and Fairmont St NW&#39;),
+             (&#39;Bike number&#39;, &#39;W20842&#39;),
+             (&#39;Member Type&#39;, &#39;Registered&#39;)])
 </pre>
 </div>
 </div>
@@ -11940,7 +11982,7 @@ City: Washington
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">duration_in_mins</span><span class="p">(</span><span class="n">datum</span><span class="p">,</span> <span class="n">city</span><span class="p">):</span>
@@ -11985,7 +12027,7 @@ City: Washington
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">time_of_trip</span><span class="p">(</span><span class="n">datum</span><span class="p">,</span> <span class="n">city</span><span class="p">):</span>
@@ -12031,7 +12073,7 @@ City: Washington
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[53]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">type_of_user</span><span class="p">(</span><span class="n">datum</span><span class="p">,</span> <span class="n">city</span><span class="p">):</span>
@@ -12084,7 +12126,7 @@ City: Washington
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[54]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">condense_data</span><span class="p">(</span><span class="n">in_file</span><span class="p">,</span> <span class="n">out_file</span><span class="p">,</span> <span class="n">city</span><span class="p">):</span>
@@ -12134,7 +12176,7 @@ City: Washington
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[55]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Run this cell to check your work</span>
@@ -12166,10 +12208,25 @@ City: Washington
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 City: Washington
+OrderedDict([(&#39;duration&#39;, &#39;7.123116666666666&#39;),
+             (&#39;month&#39;, &#39;3&#39;),
+             (&#39;hour&#39;, &#39;22&#39;),
+             (&#39;day_of_week&#39;, &#39;Thursday&#39;),
+             (&#39;user_type&#39;, &#39;Subscriber&#39;)])
 
 City: Chicago
+OrderedDict([(&#39;duration&#39;, &#39;15.433333333333334&#39;),
+             (&#39;month&#39;, &#39;3&#39;),
+             (&#39;hour&#39;, &#39;23&#39;),
+             (&#39;day_of_week&#39;, &#39;Thursday&#39;),
+             (&#39;user_type&#39;, &#39;Subscriber&#39;)])
 
 City: NYC
+OrderedDict([(&#39;duration&#39;, &#39;13.983333333333333&#39;),
+             (&#39;month&#39;, &#39;1&#39;),
+             (&#39;hour&#39;, &#39;0&#39;),
+             (&#39;day_of_week&#39;, &#39;Friday&#39;),
+             (&#39;user_type&#39;, &#39;Customer&#39;)])
 </pre>
 </div>
 </div>
@@ -12189,14 +12246,14 @@ City: NYC
 <p><a id='statistics'></a></p>
 <h3 id="Statistics">Statistics<a class="anchor-link" href="#Statistics">&#182;</a></h3><p>First, let's compute some basic counts. The first cell below contains a function that uses the csv module to iterate through a provided data file, returning the number of trips made by subscribers and customers. The second cell runs this function on the example Bay Area data in the <code>/examples/</code> folder. Modify the cells to answer the question below.</p>
 <p><strong>Question 4a</strong>: Which city has the highest number of trips? Which city has the highest proportion of trips made by subscribers? Which city has the highest proportion of trips made by short-term customers?</p>
-<p><strong>Answer</strong>: NYC</p>
+<p><strong>Answer</strong>: NYC (Total users &amp; Proprtion of Subscribers) , Chicago (Proportion of Customers)</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[77]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">number_of_trips</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
@@ -12233,7 +12290,7 @@ City: NYC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[78]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">max_of_two</span><span class="p">(</span><span class="n">x</span> <span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -12250,7 +12307,7 @@ City: NYC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[79]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Modify this and the previous cell to answer Question 4a. Remember to run ##</span>
@@ -12269,33 +12326,44 @@ City: NYC
 <span class="n">x_nyc</span><span class="p">,</span> <span class="n">y_nyc</span><span class="p">,</span> <span class="n">z_nyc</span> <span class="o">=</span> <span class="n">number_of_trips</span><span class="p">(</span><span class="n">nyc_file</span><span class="p">)</span>
 <span class="n">x_washington</span><span class="p">,</span> <span class="n">y_washington</span><span class="p">,</span> <span class="n">z_washington</span> <span class="o">=</span> <span class="n">number_of_trips</span><span class="p">(</span><span class="n">washington_file</span><span class="p">)</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">max_of_two</span><span class="p">(</span><span class="n">x_chicago</span><span class="p">,</span> <span class="n">max_of_two</span><span class="p">(</span><span class="n">x_nyc</span><span class="p">,</span> <span class="n">x_washington</span><span class="p">))</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">max_of_two</span><span class="p">(</span><span class="n">y_chicago</span><span class="p">,</span> <span class="n">max_of_two</span><span class="p">(</span><span class="n">y_nyc</span><span class="p">,</span> <span class="n">y_washington</span><span class="p">))</span>
-<span class="n">z</span> <span class="o">=</span> <span class="n">max_of_two</span><span class="p">(</span><span class="n">z_chicago</span><span class="p">,</span> <span class="n">max_of_two</span><span class="p">(</span><span class="n">z_nyc</span><span class="p">,</span> <span class="n">z_washington</span><span class="p">))</span>
+<span class="n">x_label</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Proportion of Subscribers&quot;</span><span class="p">,</span> <span class="s2">&quot;Proportion of Customers&quot;</span><span class="p">,</span> <span class="s2">&quot;Total Users&quot;</span><span class="p">]</span>
+<span class="n">y_label</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Chicago&quot;</span><span class="p">,</span> <span class="s2">&quot;Nyc&quot;</span><span class="p">,</span> <span class="s2">&quot;Washington&quot;</span><span class="p">]</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;City with Max Subscribers:&#39;</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">x_chicago</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Chicago&#39;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="n">x_nyc</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;NYC&#39;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="n">x_washington</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Washginton&#39;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">x_chicago</span><span class="o">/</span><span class="n">z_chicago</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">y_chicago</span><span class="o">/</span><span class="n">z_chicago</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">z_chicago</span><span class="p">],</span>
+                 <span class="p">[</span><span class="n">x_nyc</span><span class="o">/</span><span class="n">z_nyc</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">y_nyc</span><span class="o">/</span><span class="n">z_nyc</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">z_nyc</span><span class="p">],</span>
+                 <span class="p">[</span><span class="n">x_washington</span><span class="o">/</span><span class="n">z_washington</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">y_washington</span><span class="o">/</span><span class="n">z_washington</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">z_washington</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">y_label</span><span class="p">,</span> <span class="n">x_label</span><span class="p">)</span> <span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;City with Max Customers:&#39;</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="n">y_chicago</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Chicago&#39;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">y</span> <span class="o">==</span> <span class="n">y_nyc</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;NYC&#39;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">y</span> <span class="o">==</span> <span class="n">y_washington</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Washginton&#39;</span><span class="p">)</span>
-    
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;City with Max Users:&#39;</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="n">y_chicago</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Chicago&#39;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">y</span> <span class="o">==</span> <span class="n">y_nyc</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;NYC&#39;</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">y</span> <span class="o">==</span> <span class="n">y_washington</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Washginton&#39;</span><span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">x = max_of_two(x_chicago, max_of_two(x_nyc, x_washington))</span>
+<span class="sd">y = max_of_two(y_chicago, max_of_two(y_nyc, y_washington))</span>
+<span class="sd">z = max_of_two(z_chicago, max_of_two(z_nyc, z_washington))</span>
+
+
+<span class="sd">print(&#39;City with Max Subscribers:&#39;)</span>
+<span class="sd">if x == x_chicago:</span>
+<span class="sd">    print(&#39;Chicago&#39;)</span>
+<span class="sd">elif x == x_nyc:</span>
+<span class="sd">    print(&#39;NYC&#39;)</span>
+<span class="sd">elif x == x_washington:</span>
+<span class="sd">    print(&#39;Washginton&#39;)</span>
+
+<span class="sd">print(&#39;City with Max Customers:&#39;)</span>
+<span class="sd">if y == y_chicago:</span>
+<span class="sd">    print(&#39;Chicago&#39;)</span>
+<span class="sd">elif y == y_nyc:</span>
+<span class="sd">    print(&#39;NYC&#39;)</span>
+<span class="sd">elif y == y_washington:</span>
+<span class="sd">    print(&#39;Washginton&#39;)</span>
+<span class="sd">    </span>
+<span class="sd">print(&#39;City with Max Users:&#39;)</span>
+<span class="sd">if y == y_chicago:</span>
+<span class="sd">    print(&#39;Chicago&#39;)</span>
+<span class="sd">elif y == y_nyc:</span>
+<span class="sd">    print(&#39;NYC&#39;)</span>
+<span class="sd">elif y == y_washington:</span>
+<span class="sd">    print(&#39;Washginton&#39;)</span>
+<span class="sd">&quot;&quot;&quot;</span>
 </pre></div>
 
 </div>
@@ -12312,14 +12380,25 @@ City: NYC
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>City with Max Subscribers:
-NYC
-City with Max Customers:
-NYC
-City with Max Users:
-NYC
+<pre>            Proportion of Subscribers  Proportion of Customers  Total Users
+Chicago                     76.225201                23.774799      72131.0
+Nyc                         88.835902                11.164098     276798.0
+Washington                  78.028224                21.971776      66326.0
 </pre>
 </div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[79]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#34;\nx = max_of_two(x_chicago, max_of_two(x_nyc, x_washington))\ny = max_of_two(y_chicago, max_of_two(y_nyc, y_washington))\nz = max_of_two(z_chicago, max_of_two(z_nyc, z_washington))\n\n\nprint(&#39;City with Max Subscribers:&#39;)\nif x == x_chicago:\n    print(&#39;Chicago&#39;)\nelif x == x_nyc:\n    print(&#39;NYC&#39;)\nelif x == x_washington:\n    print(&#39;Washginton&#39;)\n\nprint(&#39;City with Max Customers:&#39;)\nif y == y_chicago:\n    print(&#39;Chicago&#39;)\nelif y == y_nyc:\n    print(&#39;NYC&#39;)\nelif y == y_washington:\n    print(&#39;Washginton&#39;)\n    \nprint(&#39;City with Max Users:&#39;)\nif y == y_chicago:\n    print(&#39;Chicago&#39;)\nelif y == y_nyc:\n    print(&#39;NYC&#39;)\nelif y == y_washington:\n    print(&#39;Washginton&#39;)\n&#34;</pre>
+</div>
+
 </div>
 
 </div>
@@ -12343,7 +12422,7 @@ NYC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[84]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Use this and additional cells to answer Question 4b.                 ##</span>
@@ -12371,7 +12450,7 @@ NYC
             <span class="n">total_duration</span> <span class="o">+=</span> <span class="n">duration</span>
             <span class="n">num_rows</span> <span class="o">+=</span> <span class="mf">1.0</span>
         
-        <span class="k">return</span> <span class="p">(</span><span class="n">city</span><span class="p">,</span><span class="n">total_duration</span><span class="o">//</span><span class="n">num_rows</span><span class="p">,</span><span class="n">more_than_30</span><span class="o">/</span><span class="n">num_rows</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">total_duration</span><span class="o">//</span><span class="n">num_rows</span><span class="p">,</span><span class="n">more_than_30</span><span class="o">/</span><span class="n">num_rows</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12381,13 +12460,19 @@ NYC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[87]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">average_trip</span><span class="p">(</span><span class="n">data_file</span><span class="p">,</span><span class="s1">&#39;BayArea&#39;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">average_trip</span><span class="p">(</span><span class="n">chicago_file</span><span class="p">,</span><span class="s1">&#39;Chicago&#39;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">average_trip</span><span class="p">(</span><span class="n">nyc_file</span><span class="p">,</span><span class="s1">&#39;NYC&#39;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">average_trip</span><span class="p">(</span><span class="n">washington_file</span><span class="p">,</span><span class="s1">&#39;Washington&#39;</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">avg_b</span><span class="p">,</span><span class="n">great_than_30_b</span> <span class="o">=</span> <span class="n">average_trip</span><span class="p">(</span><span class="n">data_file</span><span class="p">,</span><span class="s1">&#39;BayArea&#39;</span><span class="p">)</span>
+<span class="n">avg_c</span><span class="p">,</span><span class="n">great_than_30_c</span> <span class="o">=</span> <span class="n">average_trip</span><span class="p">(</span><span class="n">chicago_file</span><span class="p">,</span><span class="s1">&#39;Chicago&#39;</span><span class="p">)</span>
+<span class="n">avg_n</span><span class="p">,</span><span class="n">great_than_30_n</span> <span class="o">=</span> <span class="n">average_trip</span><span class="p">(</span><span class="n">nyc_file</span><span class="p">,</span><span class="s1">&#39;NYC&#39;</span><span class="p">)</span>
+<span class="n">avg_w</span><span class="p">,</span><span class="n">great_than_30_w</span> <span class="o">=</span> <span class="n">average_trip</span><span class="p">(</span><span class="n">washington_file</span><span class="p">,</span><span class="s1">&#39;Washington&#39;</span><span class="p">)</span>
+<span class="n">y_label</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;BayArea&quot;</span><span class="p">,</span><span class="s2">&quot;Chicago&quot;</span><span class="p">,</span><span class="s2">&quot;NYC&quot;</span><span class="p">,</span><span class="s2">&quot;Washington&quot;</span><span class="p">]</span>
+<span class="n">x_label</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Average&quot;</span><span class="p">,</span><span class="s2">&quot;Trips&gt;30 min&quot;</span><span class="p">]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="n">avg_b</span><span class="p">,</span><span class="n">great_than_30_b</span><span class="p">],[</span><span class="n">avg_c</span><span class="p">,</span><span class="n">great_than_30_c</span><span class="p">],[</span><span class="n">avg_n</span><span class="p">,</span><span class="n">great_than_30_n</span><span class="p">],[</span><span class="n">avg_w</span><span class="p">,</span><span class="n">great_than_30_w</span><span class="p">]</span>
+<span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">y_label</span><span class="p">,</span><span class="n">x_label</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -12404,10 +12489,11 @@ NYC
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>(&#39;BayArea&#39;, 14.0, 3.5243689474519764)
-(&#39;Chicago&#39;, 16.0, 8.332062497400562)
-(&#39;NYC&#39;, 15.0, 7.3024371563378345)
-(&#39;Washington&#39;, 18.0, 10.83888671109369)
+<pre>            Average  Trips&gt;30 min
+BayArea        14.0      3.524369
+Chicago        16.0      8.332062
+NYC            15.0      7.302437
+Washington     18.0     10.838887
 </pre>
 </div>
 </div>
@@ -12428,7 +12514,7 @@ NYC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[91]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Use this and additional cells to answer Question 4c. If you have    ##</span>
@@ -12457,7 +12543,7 @@ NYC
                     <span class="n">total_customer_duration</span> <span class="o">+=</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;duration&#39;</span><span class="p">])</span>
                     <span class="n">total_customer</span> <span class="o">+=</span> <span class="mi">1</span>
                     
-    <span class="k">return</span> <span class="p">(</span><span class="n">city</span><span class="p">,</span><span class="n">total_subscriber_duration</span><span class="o">/</span><span class="n">total_subscriber</span><span class="p">,</span><span class="n">total_customer_duration</span><span class="o">/</span><span class="n">total_customer</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">total_subscriber_duration</span><span class="o">/</span><span class="n">total_subscriber</span><span class="p">,</span><span class="n">total_customer_duration</span><span class="o">/</span><span class="n">total_customer</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12467,14 +12553,17 @@ NYC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[93]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(City,Subscriber,Customer)&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">rider_duration</span><span class="p">(</span><span class="n">data_file</span><span class="p">,</span><span class="s1">&#39;BayArea&#39;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">rider_duration</span><span class="p">(</span><span class="n">chicago_file</span><span class="p">,</span><span class="s1">&#39;Chicago&#39;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">rider_duration</span><span class="p">(</span><span class="n">nyc_file</span><span class="p">,</span><span class="s1">&#39;NYC&#39;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">rider_duration</span><span class="p">(</span><span class="n">washington_file</span><span class="p">,</span><span class="s1">&#39;Washington&#39;</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x_label</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Avg Subscriber Duration&quot;</span><span class="p">,</span><span class="s2">&quot;Avg Customer Duration&quot;</span><span class="p">]</span>
+<span class="n">y_label</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;BayArea&quot;</span><span class="p">,</span><span class="s2">&quot;Chicago&quot;</span><span class="p">,</span><span class="s2">&quot;NYC&quot;</span><span class="p">,</span><span class="s2">&quot;Washington&quot;</span><span class="p">]</span>
+<span class="n">avg_sub_b</span><span class="p">,</span><span class="n">avg_cus_b</span> <span class="o">=</span> <span class="n">rider_duration</span><span class="p">(</span><span class="n">data_file</span><span class="p">,</span><span class="s1">&#39;BayArea&#39;</span><span class="p">)</span>
+<span class="n">avg_sub_c</span><span class="p">,</span><span class="n">avg_cus_c</span> <span class="o">=</span> <span class="n">rider_duration</span><span class="p">(</span><span class="n">chicago_file</span><span class="p">,</span><span class="s1">&#39;Chicago&#39;</span><span class="p">)</span>
+<span class="n">avg_sub_n</span><span class="p">,</span><span class="n">avg_cus_n</span> <span class="o">=</span> <span class="n">rider_duration</span><span class="p">(</span><span class="n">nyc_file</span><span class="p">,</span><span class="s1">&#39;NYC&#39;</span><span class="p">)</span>
+<span class="n">avg_sub_w</span><span class="p">,</span><span class="n">avg_cus_w</span> <span class="o">=</span> <span class="n">rider_duration</span><span class="p">(</span><span class="n">washington_file</span><span class="p">,</span><span class="s1">&#39;Washington&#39;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="p">[</span><span class="n">avg_sub_b</span><span class="p">,</span><span class="n">avg_cus_b</span><span class="p">],[</span><span class="n">avg_sub_c</span><span class="p">,</span><span class="n">avg_cus_c</span><span class="p">],[</span><span class="n">avg_sub_n</span><span class="p">,</span><span class="n">avg_cus_n</span><span class="p">],[</span><span class="n">avg_sub_w</span><span class="p">,</span><span class="n">avg_cus_w</span><span class="p">]</span> <span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">y_label</span><span class="p">,</span> <span class="n">x_label</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -12491,11 +12580,11 @@ NYC
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>(City,Subscriber,Customer)
-(&#39;BayArea&#39;, 9.512633839275217, 54.55121116377032)
-(&#39;Chicago&#39;, 12.067201690250076, 30.979781133982506)
-(&#39;NYC&#39;, 13.680790523907177, 32.77595139473187)
-(&#39;Washington&#39;, 12.528120499294745, 41.67803139252976)
+<pre>            Avg Subscriber Duration  Avg Customer Duration
+BayArea                    9.512634              54.551211
+Chicago                   12.067202              30.979781
+NYC                       13.680791              32.775951
+Washington                12.528120              41.678031
 </pre>
 </div>
 </div>
@@ -12516,7 +12605,7 @@ NYC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[94]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># load library</span>
@@ -12578,7 +12667,7 @@ NYC
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[95]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Use this and additional cells to collect all of the trip times as a list ##</span>
@@ -12631,15 +12720,14 @@ NYC
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>If you followed the use of the <code>.hist()</code> and <code>.show()</code> functions exactly like in the example, you're probably looking at a plot that's completely unexpected. The plot consists of one extremely tall bar on the left, maybe a very short second bar, and a whole lot of empty space in the center and right. Take a look at the duration values on the x-axis. This suggests that there are some highly infrequent outliers in the data. Instead of reprocessing the data, you will use additional parameters with the <code>.hist()</code> function to limit the range of data that is plotted. Documentation for the function can be found <a href="https://matplotlib.org/devdocs/api/_as_gen/matplotlib.pyplot.hist.html#matplotlib.pyplot.hist">[here]</a>.</p>
 <p><strong>Question 5</strong>: Use the parameters of the <code>.hist()</code> function to plot the distribution of trip times for the Subscribers in your selected city. Do the same thing for only the Customers. Add limits to the plots so that only trips of duration less than 75 minutes are plotted. As a bonus, set the plots up so that bars are in five-minute wide intervals. For each group, where is the peak of each distribution? How would you describe the shape of each distribution?</p>
-<p><strong>Answer</strong>: NYC: for Subscriber the peak is at the left of the graph and for Customer the peak is at the middle of the graph.
-The subscriber graph is decreasing.</p>
+<p><strong>Answer</strong>: For NYC both the graph is right skewed and mean is at the right. For Subscriber the peak is between the value 0-15 and for customer the peak is between value 15-20.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[98]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Use this and additional cells to answer Question 5. ##</span>
@@ -12729,7 +12817,7 @@ The subscriber graph is decreasing.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[97]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Use this and additional cells to continue to explore the dataset. ##</span>
@@ -12747,6 +12835,22 @@ The subscriber graph is decreasing.</p>
         <span class="n">nyc_data_hour</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;hour&#39;</span><span class="p">]))</span>
         
 <span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">random_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">nyc_data_month</span><span class="p">])</span>
+<span class="n">random_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">nyc_data_day_of_week</span><span class="p">])</span>
+
+<span class="c1"># Create a trace</span>
+<span class="n">trace</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">random_x</span><span class="p">,</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">random_y</span><span class="p">,</span>
+    <span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;markers&#39;</span>
+<span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">trace</span><span class="p">]</span>
+
+<span class="c1"># Plot and embed in ipython notebook!</span>
+<span class="n">py</span><span class="o">.</span><span class="n">iplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;basic-scatter&#39;</span><span class="p">)</span>
+
 
 <span class="c1">#plt.bar(nyc_data_month,10)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">nyc_data_month</span><span class="p">)</span>
@@ -12836,7 +12940,7 @@ PDF (.pdf). You may need additional packages or software to perform these export
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">call</span>
@@ -12844,6 +12948,26 @@ PDF (.pdf). You may need additional packages or software to perform these export
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[20]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
